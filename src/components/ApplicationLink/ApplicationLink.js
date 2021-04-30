@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './ApplicationLink.css';
 function ApplicationLink(props) {
   return (
-    <Link className={`application-link ${props.className}`} to={props.to}>
+    <Link className={`application-link ${props.className || ''}`} to={props.to}>
       {props.children}
     </Link>
   );

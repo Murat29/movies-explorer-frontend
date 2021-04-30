@@ -1,0 +1,26 @@
+.nav-tab {
+  min-height: 66px;
+  background: #f5f5f5;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 40px;
+  align-content: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 425px) {
+  .nav-tab {
+    font-size: 11px;
+    gap: 24px;
+  }
+}
+
+.nav-tab__link {
+  color: #000000;
+  border-bottom: 1px solid #000000;
+}

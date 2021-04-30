@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link, NavLink, Switch, Route } from 'react-router-dom';
+import { NavLink, Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import logo from '../../images/logo.svg';
 import cross from '../../images/cross.svg';
 import menu from '../../images/menu.svg';
+import ApplicationLink from '../../components/ApplicationLink/ApplicationLink';
 import './Header.css';
 function Header(props) {
   const [navOpened, setNavOpened] = React.useState(false);
@@ -20,21 +21,24 @@ function Header(props) {
       className={`header ${props.location.pathname === '/' && 'header__blue'}`}
     >
       <div className="header__container">
-        <Link to="/">
+        <ApplicationLink to="/">
           <img className="header__logo" src={logo} alt="Логотип." />
-        </Link>
+        </ApplicationLink>
         <Switch>
           <Route exact path="/">
             <div className="header__login">
-              <Link
+              <ApplicationLink
                 to="/signup"
                 className="header__link header__link-registration"
               >
                 Регистрация
-              </Link>
-              <Link to="/signin" className="header__link header__link-login">
+              </ApplicationLink>
+              <ApplicationLink
+                to="/signin"
+                className="header__link header__link-login"
+              >
                 Войти
-              </Link>
+              </ApplicationLink>
             </div>
           </Route>
           <Route path={['/movies', '/saved-movies']}>

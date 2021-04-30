@@ -1,0 +1,7 @@
+.application-link {
+  text-decoration: none;
+}
+.application-link:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}

@@ -1,0 +1,124 @@
+.about-project__description-list {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__description-list {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-project__description-list {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    margin-top: 60px;
+  }
+}
+
+.about-project__description-item {
+}
+
+.about-project__description-title {
+  margin: 0;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 425px) {
+  .about-project__description-title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.about-project__description-text {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 26px 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__description-text {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 22px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-project__description-text {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 16px;
+  }
+}
+
+.about-project__strip {
+  margin-top: 110px;
+  display: flex;
+  flex-direction: row;
+}
+
+.about-project__strip-item {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.about-project__strip-item_m {
+  width: 20%;
+}
+
+@media screen and (max-width: 600px) {
+  .about-project__strip-item_m {
+    width: 35%;
+  }
+}
+
+.about-project__strip-item_l {
+  width: 80%;
+}
+
+@media screen and (max-width: 600px) {
+  .about-project__strip-item_l {
+    width: 65%;
+  }
+}
+
+.about-project__strip-text {
+  margin: 0;
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 425px) {
+  .about-project__strip-text {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
+.about-project__strip-text_background_green {
+  background-color: #2be080;
+}
+
+.about-project__strip-text_background_grey {
+  background-color: #f2f2f2;
+}
+
+.about-project__strip-text_color_grey {
+  color: #a0a0a0;
+}

@@ -1,3 +1,19 @@
+.about-project {
+  padding: 110px 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+}
+
 .about-project__description-list {
   margin-top: 70px;
   display: grid;
@@ -19,9 +35,6 @@
     gap: 56px;
     margin-top: 60px;
   }
-}
-
-.about-project__description-item {
 }
 
 .about-project__description-title {

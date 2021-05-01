@@ -1,9 +1,0 @@
-.section {
-  padding: 90px 50px;
-}
-
-@media screen and (max-width: 425px) {
-  .section {
-    padding: 70px 18px;
-  }
-}

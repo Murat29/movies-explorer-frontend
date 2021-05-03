@@ -1,0 +1,15 @@
+.movies {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .movies {
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .movies {
+  }
+}

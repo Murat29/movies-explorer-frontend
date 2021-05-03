@@ -1,5 +1,4 @@
 .footer {
-  background: #fafafa;
   padding: 80px 70px 20px;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
@@ -10,6 +9,10 @@
   grid-template-columns: 1fr 1fr;
   row-gap: 20px;
   grid-template-areas: 'title title' 'copyright links';
+}
+
+.footer__grey {
+  background: #fafafa;
 }
 
 @media screen and (max-width: 768px) {

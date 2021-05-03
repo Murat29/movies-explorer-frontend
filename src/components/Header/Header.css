@@ -53,7 +53,13 @@
 }
 
 .header__link {
+  cursor: pointer;
+  text-decoration: none;
   color: #000000;
+}
+
+.header__link:hover {
+  opacity: 0.7;
 }
 
 .header__link_active {

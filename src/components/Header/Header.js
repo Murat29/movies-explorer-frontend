@@ -41,7 +41,7 @@ function Header(props) {
               </ApplicationLink>
             </div>
           </Route>
-          <Route path={['/movies', '/saved-movies']}>
+          <Route path={['/movies', '/saved-movies', '/profile']}>
             <img
               className="header__menu-icon"
               onClick={OpenedNav}

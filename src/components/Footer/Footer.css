@@ -9,9 +9,6 @@
   grid-template-columns: 1fr 1fr;
   row-gap: 20px;
   grid-template-areas: 'title title' 'copyright links';
-}
-
-.footer__grey {
   background: #fafafa;
 }
 

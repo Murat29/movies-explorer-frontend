@@ -2,20 +2,6 @@
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
-  padding: 60px 70px 10px;
-  padding-top: 60px;
-}
-
-@media screen and (max-width: 768px) {
-  .search-form {
-    padding: 80px 30px 10px;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .search-form {
-    padding: 80px 14px 10px;
-  }
 }
 
 .search-form__form {

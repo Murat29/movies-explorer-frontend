@@ -1,11 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Footer.css';
-function Footer(props) {
+function Footer() {
   return (
-    <footer
-      className={`footer ${props.location.pathname === '/' && 'footer__grey'}`}
-    >
+    <footer className="footer">
       <p className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
@@ -24,9 +21,5 @@ function Footer(props) {
     </footer>
   );
 }
-
-Footer.propTypes = {
-  location: PropTypes.object,
-};
 
 export default Footer;

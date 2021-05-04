@@ -9,10 +9,8 @@ function App() {
   return (
     <>
       <Route path="/" component={Header}></Route>
-      <main>
-        <Route exact path="/" component={Main}></Route>
-        <Route exact path="/movies" component={Movies}></Route>
-      </main>
+      <Route exact path="/" component={Main}></Route>
+      <Route exact path="/movies" component={Movies}></Route>
       <Route path="/" component={Footer}></Route>
     </>
   );

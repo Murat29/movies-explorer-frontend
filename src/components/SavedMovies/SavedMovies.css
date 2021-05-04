@@ -1,0 +1,20 @@
+.saved-movies {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  padding: 60px 70px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .saved-movies {
+    padding: 80px 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .saved-movies {
+    padding: 80px 14px;
+  }
+}

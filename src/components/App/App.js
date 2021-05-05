@@ -5,15 +5,20 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
 import Footer from '../Footer/Footer';
 function App() {
+  const urlHeader = ['/', '/movies', '/saved-movies', '/profile'];
+  const urlFooter = ['/', '/movies', '/saved-movies'];
+
   return (
     <>
-      <Route path="/" component={Header}></Route>
-      <Route exact path="/" component={Main}></Route>
-      <Route exact path="/movies" component={Movies}></Route>
-      <Route exact path="/saved-movies" component={SavedMovies}></Route>
-      <Route path="/" component={Footer}></Route>
+      <Route exact path={urlHeader} component={Header} />
+      <Route exact path="/" component={Main} />
+      <Route exact path="/movies" component={Movies} />
+      <Route exact path="/saved-movies" component={SavedMovies} />
+      <Route exact path="/profile" component={Profile} />
+      <Route exact path={urlFooter} component={Footer} />
     </>
   );
 }

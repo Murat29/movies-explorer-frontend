@@ -14,9 +14,9 @@ function Login() {
         type: 'password',
       },
     ],
-    submitButtonText: 'Зарегистрироваться',
+    submitButtonText: 'Войти',
     questionText: 'Уже зарегистрированы?',
-    toggleButtonText: 'Войти',
+    toggleButtonText: 'Регистрация',
   };
 
   return (

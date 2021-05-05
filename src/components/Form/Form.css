@@ -1,0 +1,158 @@
+.form {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  max-width: 396px;
+}
+
+.form__title {
+  margin: 0 0 40px 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+@media screen and (max-width: 425px) {
+  .form__title {
+    text-align: center;
+    margin: 0 0 80px 0;
+  }
+}
+
+.form__inputs {
+  min-height: 266px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.form__input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form__input-container:last-of-type {
+  margin-bottom: 0;
+}
+
+.form__input-placeholder {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.form__input {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #f9f9f9;
+  min-height: 46px;
+  padding: 0 15px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.form__input:focus {
+  border: 1px solid #000000;
+}
+.form__input-error {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+  margin: 0;
+}
+
+.form__submit {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  margin: 70px 0 0 0;
+  width: 100%;
+  min-height: 45px;
+  border: 1px solid #ff6838;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+  background-color: #ff6838;
+  border-radius: 3px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.form__submit:hover {
+  opacity: 0.8;
+}
+
+.form__submit:focus {
+  border-color: #000000;
+}
+
+.form__container-toggle {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 6px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 425px) {
+  .form__container-toggle {
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.form__question-toggle {
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.form__button-toggle {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+  background-color: #ffffff;
+  border-radius: 3px;
+  border: 1px solid #ffffff;
+  color: #ff6838;
+}
+
+.form__button-toggle:hover {
+  opacity: 0.8;
+}
+
+.form__button-toggle:focus {
+  border-color: #000000;
+}
+
+@media screen and (max-width: 425px) {
+  .form__button-toggle {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

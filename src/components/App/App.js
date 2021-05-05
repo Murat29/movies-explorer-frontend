@@ -6,9 +6,11 @@ import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 function App() {
-  const urlHeader = ['/', '/movies', '/saved-movies', '/profile'];
+  const urlHeader = ['/', '/movies', '/saved-movies', '/profile', '/signup'];
   const urlFooter = ['/', '/movies', '/saved-movies'];
 
   return (
@@ -18,6 +20,8 @@ function App() {
       <Route exact path="/movies" component={Movies} />
       <Route exact path="/saved-movies" component={SavedMovies} />
       <Route exact path="/profile" component={Profile} />
+      <Route exact path="/signup" component={Register} />
+      <Route exact path="/signin" component={Login} />
       <Route exact path={urlFooter} component={Footer} />
     </>
   );

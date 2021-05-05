@@ -7,6 +7,8 @@ import menu from '../../images/menu.svg';
 import ApplicationLink from '../../components/ApplicationLink/ApplicationLink';
 import './Header.css';
 function Header(props) {
+  const currentUrl = props.location.pathname;
+
   const [navOpened, setNavOpened] = React.useState(false);
 
   function OpenedNav() {
@@ -17,10 +19,13 @@ function Header(props) {
   }
 
   return (
-    <header
-      className={`header ${props.location.pathname === '/' && 'header__blue'}`}
-    >
-      <div className="header__container">
+    <header className={`header ${currentUrl === '/' && 'header__blue'}`}>
+      <div
+        className={`header__container ${
+          ['/signin', '/signup'].includes(currentUrl) &&
+          'header__container_only-logo'
+        }`}
+      >
         <ApplicationLink to="/">
           <img className="header__logo" src={logo} alt="Логотип." />
         </ApplicationLink>

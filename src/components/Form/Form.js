@@ -1,4 +1,5 @@
 import React from 'react';
+import ApplicationLink from '../ApplicationLink/ApplicationLink';
 import PropTypes from 'prop-types';
 
 import './Form.css';
@@ -18,9 +19,12 @@ function Form({ params }) {
       <button className="form__submit">{params.submitButtonText}</button>
       <div className="form__container-toggle">
         <p className="form__question-toggle">{params.questionText}</p>
-        <button className="form__button-toggle">
+        <ApplicationLink
+          className="form__link-toggle"
+          to={params.toggleButtonUrl}
+        >
           {params.toggleButtonText}
-        </button>
+        </ApplicationLink>
       </div>
     </form>
   );

@@ -4,7 +4,7 @@ import Title from '../Title/Title';
 import Section from '../Section/Section';
 function AboutProject() {
   return (
-    <Section className="about-project" tablet="m" phone="l">
+    <Section className="about-project" tablet="m" phone="l" id="about-project">
       <Title>О проекте</Title>
       <div className="about-project__description-list">
         <div className="about-project__description-item">

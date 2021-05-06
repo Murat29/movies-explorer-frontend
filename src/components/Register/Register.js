@@ -22,6 +22,7 @@ function Register() {
     submitButtonText: 'Зарегистрироваться',
     questionText: 'Уже зарегистрированы?',
     toggleButtonText: 'Войти',
+    toggleButtonUrl: '/signin',
   };
 
   return (

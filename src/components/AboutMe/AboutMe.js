@@ -6,7 +6,7 @@ import arrow from '../../images/arrow.svg';
 import './AboutMe.css';
 function AboutMe() {
   return (
-    <Section className="about-me" tablet="m" phone="m">
+    <Section className="about-me" id="about-me" tablet="m" phone="m">
       <Title>Студент</Title>
       <div className="about-me__description">
         <div className="about-me__text-container">
@@ -20,10 +20,20 @@ function AboutMe() {
             заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
           <div className="about-me__links">
-            <a href="#" className="about-me__link about-me__link_description">
-              Facebook
+            <a
+              className="about-me__link about-me__link_description"
+              href="https://t.me/SPB_Akmurat_Khodzhatovtov"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Telegram
             </a>
-            <a href="#" className="about-me__link about-me__link_description">
+            <a
+              className="about-me__link about-me__link_description"
+              href="https://github.com/Murat29"
+              target="_blank"
+              rel="noreferrer"
+            >
               Github
             </a>
           </div>
@@ -32,26 +42,56 @@ function AboutMe() {
       </div>
       <h3 className="about-me__title">Портфолио</h3>
       <div className="about-me__portfolio-link-container">
-        <a href="#" className="about-me__link about-me__link_portfolio">
+        <a
+          className="about-me__link about-me__link_portfolio"
+          href="https://github.com/Murat29/how-to-learn"
+          target="_blank"
+          rel="noreferrer"
+        >
           Статичный сайт
         </a>
-        <a href="#" className="about-me__link about-me__portfolio-link-img">
+        <a
+          className="about-me__link about-me__portfolio-link-img"
+          href="https://github.com/Murat29/how-to-learn"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={arrow} alt="Ссылка на работу." />
         </a>
       </div>
       <div className="about-me__link about-me__portfolio-link-container">
-        <a href="#" className="about-me__link about-me__link_portfolio">
+        <a
+          className="about-me__link about-me__link_portfolio"
+          href="https://github.com/Murat29/russian-travel"
+          target="_blank"
+          rel="noreferrer"
+        >
           Адаптивный сайт
         </a>
-        <a href="#" className="about-me__link about-me__portfolio-link-img">
+        <a
+          className="about-me__link about-me__portfolio-link-img"
+          href="https://github.com/Murat29/russian-travel"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={arrow} alt="Ссылка на работу." />
         </a>
       </div>
       <div className="about-me__portfolio-link-container">
-        <a href="#" className="about-me__link about-me__link_portfolio">
+        <a
+          className="about-me__link about-me__link_portfolio"
+          href="https://github.com/Murat29/react-mesto-api-full"
+          target="_blank"
+          rel="noreferrer"
+        >
           Одностраничное приложение
         </a>
-        <a href="#" className="about-me__link about-me__portfolio-link-img">
+        <a
+          className="about-me__link about-me__portfolio-link-img"
+          href="https://github.com/Murat29/react-mesto-api-full"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={arrow} alt="Ссылка на работу." />
         </a>
       </div>

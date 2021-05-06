@@ -124,17 +124,11 @@
   margin: 0;
 }
 
-.form__button-toggle {
+.form__link-toggle {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-size: 14px;
   line-height: 17px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 0;
-  border: none;
-  box-shadow: none;
   cursor: pointer;
   outline: none;
   background-color: #ffffff;
@@ -143,16 +137,16 @@
   color: #ff6838;
 }
 
-.form__button-toggle:hover {
+.form__link-toggle:hover {
   opacity: 0.8;
 }
 
-.form__button-toggle:focus {
+.form__link-toggle:focus {
   border-color: #000000;
 }
 
 @media screen and (max-width: 425px) {
-  .form__button-toggle {
+  .form__link-toggle {
     font-size: 12px;
     line-height: 15px;
   }

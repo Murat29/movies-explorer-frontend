@@ -18,6 +18,7 @@ function Login() {
     submitButtonText: 'Войти',
     questionText: 'Ещё не зарегистрированы?',
     toggleButtonText: 'Регистрация',
+    toggleButtonUrl: '/signup',
   };
 
   return (

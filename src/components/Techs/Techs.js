@@ -4,7 +4,7 @@ import Title from '../Title/Title';
 import './Techs.css';
 function Techs() {
   return (
-    <Section className="techs" tablet="m" phone="l">
+    <Section className="techs" id="techs" tablet="m" phone="l">
       <div className="techs__container">
         <Title>Технологии</Title>
         <p className="techs__title">7 технологий</p>

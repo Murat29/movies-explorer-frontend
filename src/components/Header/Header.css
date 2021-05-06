@@ -77,6 +77,16 @@
   color: #000000;
 }
 
+.header__link_main {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header__link_main {
+    display: block;
+  }
+}
+
 .header__link:hover {
   opacity: 0.7;
 }

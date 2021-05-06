@@ -59,6 +59,14 @@ function Header(props) {
             >
               <nav className="header__nav">
                 <NavLink
+                  className="header__link header__link_main header__link-movie"
+                  activeClassName="header__link_active"
+                  exact
+                  to="/"
+                >
+                  Главная
+                </NavLink>
+                <NavLink
                   className="header__link header__link-movie"
                   activeClassName="header__link_active"
                   to="/movies"

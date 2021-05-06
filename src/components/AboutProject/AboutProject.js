@@ -1,9 +1,10 @@
 import React from 'react';
 import './AboutProject.css';
 import Title from '../Title/Title';
+import Section from '../Section/Section';
 function AboutProject() {
   return (
-    <section className="about-project">
+    <Section className="about-project" tablet="m" phone="l">
       <Title>О проекте</Title>
       <div className="about-project__description-list">
         <div className="about-project__description-item">
@@ -43,7 +44,7 @@ function AboutProject() {
           </p>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
 

@@ -1,16 +1,19 @@
 .about-project {
-  padding: 110px 70px;
+  padding-top: 110px;
+  padding-bottom: 110px;
 }
 
 @media screen and (max-width: 768px) {
   .about-project {
-    padding: 90px 50px;
+    padding-top: 90px;
+    padding-bottom: 90px;
   }
 }
 
 @media screen and (max-width: 425px) {
   .about-project {
-    padding: 70px 18px;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
 }
 

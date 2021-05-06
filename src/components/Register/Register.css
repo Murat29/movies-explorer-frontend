@@ -1,20 +1,26 @@
 .register {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
-  max-width: 396px;
   min-height: 266px;
   margin: 0 auto;
-  padding: 40px 30px 70px;
+  padding-top: 40px;
+  padding-bottom: 70px;
 }
 
 @media screen and (max-width: 768px) {
   .register {
-    padding: 40px 30px 232px;
+    padding-bottom: 232px;
   }
 }
 
 @media screen and (max-width: 425px) {
   .register {
-    padding: 50px 30px 30px;
+    padding-top: 50px;
+    padding-bottom: 30px;
   }
+}
+
+.register__container {
+  display: flex;
+  justify-content: center;
 }

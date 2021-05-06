@@ -1,18 +1,21 @@
 .profile {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
-  padding: 74px 30px 70px;
+  padding-top: 74px;
+  padding-bottom: 70px;
 }
 
 @media screen and (max-width: 768px) {
   .profile {
-    padding: 236px 30px 269px;
+    padding-top: 236px;
+    padding-bottom: 269px;
   }
 }
 
 @media screen and (max-width: 425px) {
   .profile {
-    padding: 70px 30px 40px;
+    padding-top: 70px;
+    padding-bottom: 40px;
   }
 }
 

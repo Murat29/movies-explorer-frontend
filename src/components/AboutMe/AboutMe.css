@@ -1,18 +1,21 @@
 .about-me {
-  padding: 110px 70px 125px;
+  padding-top: 110px;
+  padding-bottom: 125px;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
 }
 
 @media screen and (max-width: 768px) {
   .about-me {
-    padding: 90px 50px;
+    padding-top: 90px;
+    padding-bottom: 90px;
   }
 }
 
 @media screen and (max-width: 425px) {
   .about-me {
-    padding: 70px 18px;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
 }
 

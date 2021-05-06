@@ -1,5 +1,6 @@
 import React from 'react';
 import './Login.css';
+import Section from '../Section/Section';
 import Form from '../Form/Form';
 function Login() {
   const formParams = {
@@ -15,14 +16,16 @@ function Login() {
       },
     ],
     submitButtonText: 'Войти',
-    questionText: 'Уже зарегистрированы?',
+    questionText: 'Ещё не зарегистрированы?',
     toggleButtonText: 'Регистрация',
   };
 
   return (
-    <section className="login">
-      <Form params={formParams} />
-    </section>
+    <Section className="login" tablet="m" phone="l">
+      <div className="login__container">
+        <Form params={formParams} />
+      </div>
+    </Section>
   );
 }
 

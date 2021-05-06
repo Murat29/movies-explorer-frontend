@@ -1,5 +1,6 @@
 import React from 'react';
 import './Register.css';
+import Section from '../Section/Section';
 import Form from '../Form/Form';
 function Register() {
   const formParams = {
@@ -24,9 +25,11 @@ function Register() {
   };
 
   return (
-    <section className="register">
-      <Form params={formParams} />
-    </section>
+    <Section className="register" tablet="m" phone="l">
+      <div className="register__container">
+        <Form params={formParams} />
+      </div>
+    </Section>
   );
 }
 

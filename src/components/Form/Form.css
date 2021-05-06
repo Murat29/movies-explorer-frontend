@@ -2,6 +2,7 @@
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   max-width: 396px;
+  width: 100%;
 }
 
 .form__title {

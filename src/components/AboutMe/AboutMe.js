@@ -1,11 +1,12 @@
 import React from 'react';
+import Section from '../Section/Section';
 import Title from '../Title/Title';
 import avatar from '../../images/avatar.png';
 import arrow from '../../images/arrow.svg';
 import './AboutMe.css';
 function AboutMe() {
   return (
-    <section className="about-me">
+    <Section className="about-me" tablet="m" phone="m">
       <Title>Студент</Title>
       <div className="about-me__description">
         <div className="about-me__text-container">
@@ -54,7 +55,7 @@ function AboutMe() {
           <img src={arrow} alt="Ссылка на работу." />
         </a>
       </div>
-    </section>
+    </Section>
   );
 }
 

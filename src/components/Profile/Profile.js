@@ -1,4 +1,5 @@
 import React from 'react';
+import Section from '../Section/Section';
 import './Profile.css';
 function Profile() {
   const [name, setName] = React.useState('Виталий');
@@ -13,7 +14,7 @@ function Profile() {
   }
 
   return (
-    <section className="profile">
+    <Section className="profile" tablet="m" phone="l">
       <h2 className="profile__title">Привет, Виталий!</h2>
       <form className="profile__form">
         <div className="profile__input-container">
@@ -40,7 +41,7 @@ function Profile() {
           Выйти из аккаунта
         </button>
       </form>
-    </section>
+    </Section>
   );
 }
 

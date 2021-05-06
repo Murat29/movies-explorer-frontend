@@ -1,0 +1,44 @@
+.section {
+  width: 100%;
+}
+
+.section__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .section__container_tablet_s {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .section__container_tablet_m {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .section__container_phone_s {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .section__container_phone_m {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .section__container_phone_l {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .section__container_phone_xl {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

@@ -9,7 +9,11 @@
 }
 
 .filter-checkbox__invisible-checkbox {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
 .filter-checkbox__visible-checkbox {
@@ -19,6 +23,7 @@
   width: 36px;
   height: 20px;
   cursor: pointer;
+  border: 1px solid #ebebeb;
 }
 
 .filter-checkbox__visible-checkbox:before {
@@ -33,9 +38,19 @@
   border-radius: 50%;
 }
 
+.filter-checkbox__visible-checkbox:hover {
+  opacity: 0.7;
+}
+
 .filter-checkbox__invisible-checkbox:checked
   + .filter-checkbox__visible-checkbox {
   background-color: #2be080;
+  border-color: #2be080;
+}
+
+.filter-checkbox__invisible-checkbox:focus
+  + .filter-checkbox__visible-checkbox {
+  border-color: #000000;
 }
 
 .filter-checkbox__invisible-checkbox:checked

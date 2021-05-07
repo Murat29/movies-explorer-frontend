@@ -50,7 +50,7 @@
 .search-form__submit {
   margin: 0;
   padding: 0;
-  border-radius: 50%;
+  border-radius: 48px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -58,15 +58,21 @@
   top: 6px;
   right: 6px;
   font-size: 0;
+  width: 34px;
+  height: 34px;
+  background-color: #ff6838;
+  background-image: url(../../images/white-pointer.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border: 1px solid #ff6838;
 }
 
 .search-form__submit:hover {
   opacity: 0.7;
 }
 
-.search-form__submit-img {
-  width: 34px;
-  height: 34px;
+.search-form__submit:focus {
+  border-color: #000000;
 }
 
 .search-form__border {

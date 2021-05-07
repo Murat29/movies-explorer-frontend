@@ -1,0 +1,59 @@
+.promo {
+  min-height: 524px;
+  background-color: #465dff;
+  background-image: url(../../images/practikum.svg);
+  background-repeat: no-repeat;
+  background-position: top 82px left 50%;
+  background-size: 320px;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    min-height: 784px;
+    background-position: top 228px left 50%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .promo {
+    min-height: 570px;
+    background-position: top 142px left 50%;
+    background-size: 248px;
+  }
+}
+
+.promo__title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  max-width: 720px;
+  margin: 184px 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  .promo__title {
+    margin-top: 326px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .promo__title {
+    font-size: 41px;
+    line-height: 49px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .promo__title {
+    margin-top: 207px;
+    font-size: 31px;
+    line-height: 39px;
+  }
+}

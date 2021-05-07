@@ -1,0 +1,26 @@
+.login {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  min-height: 266px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .login {
+    padding-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .login {
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+}
+
+.login__container {
+  display: flex;
+  justify-content: center;
+}

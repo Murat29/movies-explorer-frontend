@@ -1,0 +1,249 @@
+.about-me {
+  padding-top: 110px;
+  padding-bottom: 125px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-me {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+
+.about-me__description {
+  margin-top: 66px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .about-me__description {
+    grid-template-columns: auto;
+    margin-top: 60px;
+    gap: 40px;
+  }
+}
+
+.about-me__text-container {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-me__name {
+  margin: 0;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-me__name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+
+.about-me__job {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 18px 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__job {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .about-me__job {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-me__job {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.about-me__about {
+  margin: 26px 0 0 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__about {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-me__about {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.about-me__links {
+  margin-top: auto;
+  display: flex;
+  gap: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .about-me__links {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-me__links {
+    gap: 26px;
+  }
+}
+
+.about-me__link_description {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.about-me__link {
+  text-decoration: none;
+  color: #000000;
+}
+.about-me__link:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.about-me__avatar {
+  border-radius: 10px;
+  height: 327px;
+  width: 270px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__avatar {
+    height: 307px;
+    width: 255px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-me__avatar {
+    grid-row: 1/2;
+    justify-self: center;
+    height: 352px;
+    width: 292px;
+  }
+}
+
+.about-me__title {
+  margin: 100px 0 50px 0;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #a0a0a0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__title {
+    margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-me__title {
+    margin-top: 70px;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-me__title {
+    font-size: 14px;
+  }
+}
+
+.about-me__portfolio-link-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 19px;
+  margin-bottom: 20px;
+}
+
+.about-me__portfolio-link-container:last-of-type {
+  margin-bottom: 0;
+  border: none;
+  padding-bottom: 0;
+}
+
+.about-me__link_portfolio {
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__link_portfolio {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-me__link_portfolio {
+    font-size: 24px;
+    line-height: 34px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .about-me__link_portfolio {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+.about-me__portfolio-link-img {
+  width: 18px;
+  height: 17px;
+}
+
+@media screen and (max-width: 425px) {
+  .about-me__portfolio-link-img {
+    width: 15px;
+    height: 14px;
+  }
+}

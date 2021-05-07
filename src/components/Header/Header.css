@@ -1,0 +1,247 @@
+.header {
+  background: #ffffff;
+  width: 100%;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  position: relative;
+  z-index: 10;
+}
+.header__blue {
+  background: #465dff;
+}
+.header__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  max-width: 1280px;
+  min-height: 74px;
+  margin: 0 auto;
+  padding: 18px 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__container {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__container {
+    padding: 14px 18px;
+  }
+}
+
+.header__container_only-logo {
+  max-width: 396px;
+  padding: 70px 30px 0;
+  box-sizing: content-box;
+}
+
+@media screen and (max-width: 768px) {
+  .header__container_only-logo {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__container_only-logo {
+    padding-top: 56px;
+    justify-content: center;
+  }
+}
+
+.header__logo {
+  display: block;
+  width: 38px;
+  height: 38px;
+}
+
+.header__login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@media screen and (max-width: 425px) {
+  .header__login {
+    font-size: 10px;
+  }
+}
+
+.header__link {
+  cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+}
+
+.header__link_main {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header__link_main {
+    display: block;
+  }
+}
+
+.header__link:hover {
+  opacity: 0.7;
+}
+
+.header__link_active {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .header__link_active {
+    border-bottom: 2px solid #000000;
+  }
+}
+
+.header__link-registration {
+  color: #ffffff;
+  margin-right: 30px;
+}
+
+.header__link-login {
+  display: block;
+  background: #2be080;
+  padding: 8px 20px;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 425px) {
+  .header__link-login {
+    padding: 5px 12px;
+  }
+}
+
+.header__menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header__menu-icon {
+    width: 28px;
+    height: 23px;
+    display: block;
+  }
+}
+
+@keyframes departure {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes emergence {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__nav-container {
+    position: fixed;
+    display: none;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    animation: emergence 0.3s linear;
+  }
+
+  .header__nav-container_is-opened {
+    display: flex;
+  }
+}
+
+.header__nav {
+  animation: departure 0.3s linear;
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__nav {
+    font-weight: 500;
+    min-width: 520px;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 50px 50px;
+    box-sizing: border-box;
+    position: relative;
+  }
+}
+
+.header__link-movie {
+  margin-right: 30px;
+}
+@media screen and (max-width: 768px) {
+  .header__link-movie {
+    margin-right: 0;
+    margin-bottom: 28px;
+  }
+}
+
+.header__container-account {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 13px;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__container-account {
+    margin-top: auto;
+    margin-left: 0;
+  }
+}
+
+.header__link-account {
+  display: flex;
+  align-items: center;
+  line-height: 16px;
+}
+
+.header__account-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: #f9f9f9 url(../../images/account-icon.svg) no-repeat center;
+  background-size: 11px 11px;
+  border-radius: 6px;
+}
+
+.header__cross-icon {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header__cross-icon {
+    position: absolute;
+    object-fit: cover;
+    top: 22px;
+    right: 22px;
+    width: 22px;
+    height: 22px;
+    transform: rotate(45deg);
+    display: block;
+  }
+}

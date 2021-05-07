@@ -3,6 +3,8 @@
   width: 100%;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
+  position: relative;
+  z-index: 10;
 }
 .header__blue {
   background: #465dff;

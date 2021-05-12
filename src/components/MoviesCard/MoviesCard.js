@@ -13,30 +13,33 @@ function MoviesCard({ data, saveMovies }) {
   }
   return (
     <li className="movies-card">
-      <div className="movies-card__container">
-        <div className="movies-card__text">
-          <p className="movies-card__title">{data.title}</p>
-          <p className="movies-card__time">{data.time}</p>
-        </div>
-        <button className="movies-card__button">
-          {saveMovies ? (
-            <img className="movies-card__button-img" src={imgDeleteCard} />
-          ) : (
-            <img
-              className="movies-card__button-img"
-              onClick={toggleSaveActive}
-              src={saveActive ? imgSaveActive : imgSaveDisable}
-              alt={saveMovies ? 'Сохранить фильм' : 'Удалить фильм'}
-            />
-          )}
-        </button>
+      <div className="movies-card__text">
+        <p className="movies-card__title">{data.nameRU}</p>
+        <p className="movies-card__time">{data.duration}</p>
       </div>
-
-      <img
-        className="movies-card__poster"
-        src={data.image}
-        alt="Постер фильма."
-      />
+      <button className="movies-card__button">
+        {saveMovies ? (
+          <img className="movies-card__button-img" src={imgDeleteCard} />
+        ) : (
+          <img
+            className="movies-card__button-img"
+            onClick={toggleSaveActive}
+            src={saveActive ? imgSaveActive : imgSaveDisable}
+            alt={saveMovies ? 'Сохранить фильм' : 'Удалить фильм'}
+          />
+        )}
+      </button>
+      <a className="movies-card__link" href="#">
+        <img
+          className="movies-card__poster"
+          src={`${
+            data.image?.url
+              ? 'https://api.nomoreparties.co' + data.image.url
+              : ''
+          }`}
+          alt="Постер фильма."
+        />
+      </a>
     </li>
   );
 }

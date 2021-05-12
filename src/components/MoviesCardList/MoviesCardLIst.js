@@ -2,20 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MoviesCardList.css';
 import Section from '../Section/Section';
-import examplePoster from '../../images/examplePoster.png';
 import MoviesCard from '../MoviesCard/MoviesCard';
-function MoviesCardList({ saveMovies }) {
-  const cardsData = [
-    { title: '33 слова о дизайне', time: '1ч 47м', image: examplePoster },
-    { title: '33 слова о дизайне', time: '1ч 47м', image: examplePoster },
-    { title: '33 слова о дизайне', time: '1ч 47м', image: examplePoster },
-    { title: '33 слова о дизайне', time: '1ч 47м', image: examplePoster },
-    { title: '33 слова о дизайне', time: '1ч 47м', image: examplePoster },
-  ];
+import Preloader from '../Preloader/Preloader';
+function MoviesCardList({ saveMovies, movies, isOpenPreloader, errorText }) {
   return (
     <Section className="movies-card-list" tablet="s" phone="s">
+      {isOpenPreloader && <Preloader />}
+      <p className="movies-card__error">{errorText}</p>
       <ul className="movies-card-list__container">
-        {cardsData.map((data, i) => (
+        {movies.map((data, i) => (
           <MoviesCard key={i} data={data} saveMovies={saveMovies} />
         ))}
       </ul>
@@ -28,6 +23,9 @@ function MoviesCardList({ saveMovies }) {
 
 MoviesCardList.propTypes = {
   saveMovies: PropTypes.bool,
+  movies: PropTypes.array,
+  isOpenPreloader: PropTypes.bool,
+  errorText: PropTypes.string,
 };
 
 export default MoviesCardList;

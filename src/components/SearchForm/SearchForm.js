@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Section from '../Section/Section';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
-function SearchForm() {
+
+function SearchForm({ onSubmit }) {
   const [searchValue, setSearchValue] = React.useState({
     value: '',
     isError: false,
@@ -13,13 +15,14 @@ function SearchForm() {
   }
 
   function handleSubmit(e) {
-    console.log(e.target);
     e.preventDefault();
     if (!searchValue.value) {
       setSearchValue({
         value: '',
         isError: true,
       });
+    } else {
+      onSubmit(searchValue.value);
     }
   }
 
@@ -45,5 +48,9 @@ function SearchForm() {
     </Section>
   );
 }
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
 
 export default SearchForm;

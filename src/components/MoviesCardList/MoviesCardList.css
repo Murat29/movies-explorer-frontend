@@ -11,6 +11,30 @@
   }
 }
 
+.movies-card__error {
+  text-align: center;
+  font-style: normal;
+  color: #ff0000;
+  margin: 0;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 0 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .movies-card__error {
+    font-size: 15px;
+    line-height: 19px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .movies-card__error {
+    font-size: 13px;
+    line-height: 17px;
+  }
+}
+
 .movies-card-list__container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(274px, 1fr));

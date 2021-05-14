@@ -14,11 +14,10 @@ function Movies() {
   function handleSearchSubmit(value) {
     setMovies([]);
     setIsOpenPreloader(true);
+    setErrorText('');
     moviesApi
       .getMovies()
       .then((data) => {
-        throw 'error';
-        // eslint-disable-next-line no-unreachable
         const filteredMovies = filterMovies(data, value);
         if (filteredMovies.length === 0) setErrorText('Ничего не найдено');
         else setMovies(filteredMovies);

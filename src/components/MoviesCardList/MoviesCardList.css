@@ -81,6 +81,10 @@
   width: 100%;
 }
 
+.movies-card-list__button-yet_invisibly {
+  display: none;
+}
+
 .movies-card-list__button-yet:hover {
   opacity: 0.8;
 }

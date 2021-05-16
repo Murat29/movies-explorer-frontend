@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardLIst from '../MoviesCardList/MoviesCardLIst';
@@ -9,14 +7,21 @@ import './Movies.css';
 
 function Movies() {
   const [movies, setMovies] = React.useState([]);
-  const [displayedMovies, setDisplayedMovies] = React.useState([]);
-  const [movieDisplayCounter, setMovieDisplayCounter] = React.useState(0);
+  const [numberOfMoviesDisplayed, setNumberOfMoviesDisplayed] =
+    React.useState(0);
   const [isOpenPreloader, setIsOpenPreloader] = React.useState(false);
   const [errorText, setErrorText] = React.useState('');
-  // eslint-disable-next-line no-unused-vars
   const [screen, setScreen] = React.useState(window.screen.availWidth);
 
   React.useEffect(() => {
+    let savedMovies = JSON.parse(localStorage.getItem('movies'));
+    if (savedMovies === null) savedMovies = [];
+    setMovies(savedMovies);
+
+    let savedNumber = window.localStorage.getItem('numberOfMoviesDisplayed');
+    if (savedNumber === null) savedNumber = 0;
+    setNumberOfMoviesDisplayed(+savedNumber);
+
     let timer = undefined;
     function updateScreen() {
       if (timer) {
@@ -26,39 +31,29 @@ function Movies() {
         setScreen(window.screen.availWidth);
       }, 1000);
     }
-
+    // window.addEventListener('beforeunload', () => {
+    //   localStorage.setItem('movies', JSON.stringify(movies));
+    //   localStorage.setItem('numberOfMoviesDisplayed', String(numberOfMoviesDisplayed));
+    // });
     window.addEventListener('resize', updateScreen);
   }, []);
 
-  React.useEffect(() => {
-    addMoviesToDisplayed();
-  }, [movies]);
-
-  function addMoviesToDisplayed() {
+  function showMoreMovies() {
     let numberOfAddedMovies = 0;
-    const moviesToAdd = [];
-    if (movies.length > 0) {
-      if (screen > 1009) numberOfAddedMovies = 3;
-      else if (screen > 637) numberOfAddedMovies = 2;
-      else numberOfAddedMovies = 1;
-      for (
-        let i = movieDisplayCounter;
-        i < movieDisplayCounter + numberOfAddedMovies;
-        i++
-      ) {
-        if (movies[i]) moviesToAdd.push(movies[i]);
-        else break;
-      }
-    }
+    if (screen > 1009) numberOfAddedMovies = 3;
+    else if (screen > 637) numberOfAddedMovies = 2;
+    else numberOfAddedMovies = 1;
 
-    setMovieDisplayCounter(movieDisplayCounter + numberOfAddedMovies);
-    setDisplayedMovies([...displayedMovies, ...moviesToAdd]);
+    setNumberOfMoviesDisplayed(numberOfMoviesDisplayed + numberOfAddedMovies);
+    localStorage.setItem(
+      'numberOfMoviesDisplayed',
+      String(numberOfMoviesDisplayed + numberOfAddedMovies)
+    );
   }
 
   function handleSearchSubmit(value) {
     setMovies([]);
-    setDisplayedMovies([]);
-    setMovieDisplayCounter(0);
+    setNumberOfMoviesDisplayed(0);
     setIsOpenPreloader(true);
     setErrorText('');
     moviesApi
@@ -66,9 +61,10 @@ function Movies() {
       .then((data) => {
         const filteredMovies = filterMovies(data, value);
         if (filteredMovies.length === 0) setErrorText('Ничего не найдено');
-        else setMovies(filteredMovies);
+        showMoreMovies();
+        setMovies(filteredMovies);
+        localStorage.setItem('movies', JSON.stringify(filteredMovies));
       })
-
       .catch(() =>
         setErrorText(
           'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
@@ -82,10 +78,14 @@ function Movies() {
       <SearchForm onSubmit={handleSearchSubmit} />
       <MoviesCardLIst
         isOpenPreloader={isOpenPreloader}
-        displayedMovies={displayedMovies}
+        displayedMovies={
+          numberOfMoviesDisplayed === 0
+            ? []
+            : movies.slice(0, numberOfMoviesDisplayed)
+        }
         errorText={errorText}
-        addMoviesToDisplayed={addMoviesToDisplayed}
-        buttonYetInvisibly={movies.length === displayedMovies.length}
+        showMoreMovies={showMoreMovies}
+        buttonYetInvisibly={movies.length === numberOfMoviesDisplayed - 1}
       />
     </main>
   );

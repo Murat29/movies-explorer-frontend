@@ -9,7 +9,7 @@ function MoviesCardList({
   displayedMovies,
   isOpenPreloader,
   errorText,
-  addMoviesToDisplayed,
+  showMoreMovies,
   buttonYetInvisibly,
 }) {
   return (
@@ -23,7 +23,7 @@ function MoviesCardList({
       </ul>
       {!saveMovies && (
         <button
-          onClick={addMoviesToDisplayed}
+          onClick={showMoreMovies}
           className={`movies-card-list__button-yet ${
             buttonYetInvisibly && 'movies-card-list__button-yet_invisibly'
           }`}
@@ -40,7 +40,7 @@ MoviesCardList.propTypes = {
   displayedMovies: PropTypes.array,
   isOpenPreloader: PropTypes.bool,
   errorText: PropTypes.string,
-  addMoviesToDisplayed: PropTypes.func,
+  showMoreMovies: PropTypes.func,
   buttonYetInvisibly: PropTypes.bool,
 };
 

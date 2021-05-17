@@ -15,7 +15,9 @@ function MoviesCard({ data, saveMovies }) {
     <li className="movies-card">
       <div className="movies-card__text">
         <p className="movies-card__title">{data.nameRU}</p>
-        <p className="movies-card__time">{data.duration}</p>
+        <p className="movies-card__time">
+          {Math.floor(data?.duration / 60)}ч {data?.duration % 60}м
+        </p>
       </div>
       <button className="movies-card__button">
         {saveMovies ? (

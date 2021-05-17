@@ -31,39 +31,50 @@ function Movies() {
         setScreen(window.screen.availWidth);
       }, 1000);
     }
-    // window.addEventListener('beforeunload', () => {
-    //   localStorage.setItem('movies', JSON.stringify(movies));
-    //   localStorage.setItem('numberOfMoviesDisplayed', String(numberOfMoviesDisplayed));
-    // });
     window.addEventListener('resize', updateScreen);
   }, []);
 
-  function showMoreMovies() {
-    let numberOfAddedMovies = 0;
-    if (screen > 1009) numberOfAddedMovies = 3;
-    else if (screen > 637) numberOfAddedMovies = 2;
-    else numberOfAddedMovies = 1;
+  React.useEffect(() => {
+    localStorage.setItem('movies', JSON.stringify(movies));
+  }, [movies]);
 
-    setNumberOfMoviesDisplayed(numberOfMoviesDisplayed + numberOfAddedMovies);
+  React.useEffect(() => {
     localStorage.setItem(
       'numberOfMoviesDisplayed',
-      String(numberOfMoviesDisplayed + numberOfAddedMovies)
+      String(numberOfMoviesDisplayed)
+    );
+  }, [numberOfMoviesDisplayed]);
+
+  function showMoreMovies(isSubmit, isNothingFound, moviesLength) {
+    let numberOfAddedMovies = 0;
+    if (!isNothingFound) {
+      if (screen > 1009) numberOfAddedMovies = 3;
+      else if (screen > 637) numberOfAddedMovies = 2;
+      else numberOfAddedMovies = 1;
+    }
+
+    setNumberOfMoviesDisplayed(
+      Math.min(
+        (isSubmit ? 0 : numberOfMoviesDisplayed) + numberOfAddedMovies,
+        moviesLength ? moviesLength : movies.length
+      )
     );
   }
 
   function handleSearchSubmit(value) {
     setMovies([]);
-    setNumberOfMoviesDisplayed(0);
     setIsOpenPreloader(true);
     setErrorText('');
     moviesApi
       .getMovies()
       .then((data) => {
         const filteredMovies = filterMovies(data, value);
-        if (filteredMovies.length === 0) setErrorText('Ничего не найдено');
-        showMoreMovies();
+        let newErrorText = '';
+        if (filteredMovies.length === 0) newErrorText = 'Ничего не найдено';
+        setErrorText(newErrorText);
         setMovies(filteredMovies);
-        localStorage.setItem('movies', JSON.stringify(filteredMovies));
+        showMoreMovies(true, Boolean(newErrorText), filteredMovies.length);
+        console.log(filteredMovies);
       })
       .catch(() =>
         setErrorText(
@@ -85,7 +96,7 @@ function Movies() {
         }
         errorText={errorText}
         showMoreMovies={showMoreMovies}
-        buttonYetInvisibly={movies.length === numberOfMoviesDisplayed - 1}
+        buttonYetInvisibly={movies.length === numberOfMoviesDisplayed}
       />
     </main>
   );

@@ -12,6 +12,10 @@ function MoviesCardList({
   showMoreMovies,
   buttonYetInvisibly,
 }) {
+  function handleClick() {
+    showMoreMovies(false, false);
+  }
+
   return (
     <Section className="movies-card-list" tablet="s" phone="s">
       {isOpenPreloader && <Preloader />}
@@ -23,7 +27,7 @@ function MoviesCardList({
       </ul>
       {!saveMovies && (
         <button
-          onClick={showMoreMovies}
+          onClick={handleClick}
           className={`movies-card-list__button-yet ${
             buttonYetInvisibly && 'movies-card-list__button-yet_invisibly'
           }`}

@@ -44,14 +44,32 @@ function App() {
     }
   }, []);
 
-  function registration(name, email, password) {
+  function handleRegistration(name, email, password) {
     return mainApi
       .register(name, email, password)
       .then(() => {
         return mainApi.authorize(email, password);
       })
       .then((res) => {
-        localStorage.setItem('token', res.token);
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+        }
+        return mainApi.checkToken(res.token);
+      })
+      .then((res) => {
+        setLoggedIn(true);
+        setCurrentUser(res);
+        history.push('/movies');
+      });
+  }
+
+  function handleLogin(email, password) {
+    return mainApi
+      .authorize(email, password)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+        }
         return mainApi.checkToken(res.token);
       })
       .then((res) => {
@@ -78,9 +96,11 @@ function App() {
           component={Profile}
         />
         <Route path="/signup">
-          <Register registration={registration} />
+          <Register handleRegistration={handleRegistration} />
         </Route>
-        <Route path="/signin" component={Login} />
+        <Route path="/signin">
+          <Login handleLogin={handleLogin} />
+        </Route>
         <Route path="*" component={PageNotFound} />
       </Switch>
       <Route exact path={urlFooter} component={Footer} />

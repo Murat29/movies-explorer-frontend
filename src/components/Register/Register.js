@@ -4,7 +4,7 @@ import './Register.css';
 import Section from '../Section/Section';
 import Form from '../Form/Form';
 
-function Register({ registration }) {
+function Register({ handleRegistration }) {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -25,9 +25,10 @@ function Register({ registration }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsRegistrationError(false);
-    registration(name, email, password).catch(() =>
-      setIsRegistrationError(true)
-    );
+    handleRegistration(name, email, password).catch((err) => {
+      setIsRegistrationError(true);
+      console.log(err);
+    });
   }
 
   const formParams = {
@@ -53,8 +54,8 @@ function Register({ registration }) {
       },
     ],
     onSubmit: handleSubmit,
-    submitButtonText: 'Зарегистрироваться',
     isRegistrationError: isRegistrationError,
+    submitButtonText: 'Зарегистрироваться',
     questionText: 'Уже зарегистрированы?',
     toggleButtonText: 'Войти',
     toggleButtonUrl: '/signin',
@@ -70,7 +71,7 @@ function Register({ registration }) {
 }
 
 Register.propTypes = {
-  registration: PropTypes.func,
+  handleRegistration: PropTypes.func,
 };
 
 export default Register;

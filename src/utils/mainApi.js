@@ -4,27 +4,36 @@ class MainApi {
     this.url = config.url;
   }
 
-  // getMovies() {
-  //   return fetch(this.url + '/movies', {
-  //     method: 'GET',
-  //     headers: this.headers,
-  //   }).then(this._getResponseData);
-  // }
+  getMovies(token) {
+    return fetch(this.url + '/movies', {
+      method: 'GET',
+      headers: {
+        ...this.headers,
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._getResponseData);
+  }
 
-  // saveMovie(MovieData) {
-  //   return fetch(this.url + '/movies', {
-  //     method: 'POST',
-  //     headers: this.headers,
-  //     body: JSON.stringify(MovieData),
-  //   }).then(this._getResponseData);
-  // }
+  saveMovie(token, movieData) {
+    return fetch(this.url + '/movies', {
+      method: 'POST',
+      headers: {
+        ...this.headers,
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(movieData),
+    }).then(this._getResponseData);
+  }
 
-  // deleteSaveMovie(id) {
-  //   return fetch(this.url + '/movies/' + id, {
-  //     method: 'DELETE',
-  //     headers: this.headers,
-  //   }).then(this._getResponseData);
-  // }
+  deleteSaveMovie(token, id) {
+    return fetch(this.url + '/movies/' + id, {
+      method: 'DELETE',
+      headers: {
+        ...this.headers,
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._getResponseData);
+  }
 
   register(name, email, password) {
     console.log(name);

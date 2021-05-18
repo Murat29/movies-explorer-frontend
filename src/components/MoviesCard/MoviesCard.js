@@ -6,8 +6,15 @@ import imgDeleteCard from '../../images/img-delete-card.svg';
 import mainApi from '../../utils/mainApi';
 
 import './MoviesCard.css';
-function MoviesCard({ data, saveMovies }) {
-  const [isSavedMovie, setIsSavedMovie] = React.useState(false);
+function MoviesCard({
+  data,
+  isSavedMoviesPage,
+  indexesOfSavedMovies,
+  deleteDisplayeMovie,
+}) {
+  const [isSavedMovie, setIsSavedMovie] = React.useState(
+    indexesOfSavedMovies.includes(data.id)
+  );
 
   function addToSavedMovies() {
     const token = localStorage.getItem('token');
@@ -21,7 +28,13 @@ function MoviesCard({ data, saveMovies }) {
     const token = localStorage.getItem('token');
     mainApi
       .deleteSaveMovie(token, data.id)
-      .then(() => setIsSavedMovie(false))
+      .then(() => {
+        if (isSavedMoviesPage) {
+          deleteDisplayeMovie(data.id);
+        } else {
+          setIsSavedMovie(false);
+        }
+      })
       .catch((err) => console.log(err));
   }
 
@@ -34,9 +47,10 @@ function MoviesCard({ data, saveMovies }) {
         </p>
       </div>
       <button className="movies-card__button">
-        {saveMovies ? (
+        {isSavedMoviesPage ? (
           <img
             className="movies-card__button-img"
+            onClick={removeFromSavedMovies}
             src={imgDeleteCard}
             alt="Удалить фильм из сохранненых."
           />
@@ -75,7 +89,9 @@ function MoviesCard({ data, saveMovies }) {
 
 MoviesCard.propTypes = {
   data: PropTypes.object,
-  saveMovies: PropTypes.bool,
+  isSavedMoviesPage: PropTypes.bool,
+  indexesOfSavedMovies: PropTypes.array,
+  deleteDisplayeMovie: PropTypes.func,
 };
 
 export default MoviesCard;

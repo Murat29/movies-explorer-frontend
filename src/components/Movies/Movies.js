@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardLIst from '../MoviesCardList/MoviesCardLIst';
 import moviesApi from '../../utils/moviesApi';
 import filterMovies from '../../utils/filterMovies';
 import './Movies.css';
 
-function Movies() {
+function Movies({ indexesOfSavedMovies }) {
   const [movies, setMovies] = React.useState([]);
   const [numberOfMoviesDisplayed, setNumberOfMoviesDisplayed] =
     React.useState(0);
@@ -97,9 +98,14 @@ function Movies() {
         errorText={errorText}
         showMoreMovies={showMoreMovies}
         buttonYetInvisibly={movies.length === numberOfMoviesDisplayed}
+        indexesOfSavedMovies={indexesOfSavedMovies}
       />
     </main>
   );
 }
+
+Movies.propTypes = {
+  indexesOfSavedMovies: PropTypes.array,
+};
 
 export default Movies;

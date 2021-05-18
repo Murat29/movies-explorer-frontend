@@ -5,12 +5,14 @@ import Section from '../Section/Section';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 function MoviesCardList({
-  saveMovies,
+  isSavedMoviesPage,
   displayedMovies,
   isOpenPreloader,
   errorText,
   showMoreMovies,
   buttonYetInvisibly,
+  indexesOfSavedMovies,
+  deleteDisplayeMovie,
 }) {
   function handleClick() {
     showMoreMovies(false, false);
@@ -21,11 +23,17 @@ function MoviesCardList({
       {isOpenPreloader && <Preloader />}
       <p className="movies-card__error">{errorText}</p>
       <ul className="movies-card-list__container">
-        {displayedMovies.map((data, i) => (
-          <MoviesCard key={i} data={data} saveMovies={saveMovies} />
+        {displayedMovies.map((data) => (
+          <MoviesCard
+            key={data.id}
+            data={data}
+            isSavedMoviesPage={isSavedMoviesPage}
+            indexesOfSavedMovies={indexesOfSavedMovies}
+            deleteDisplayeMovie={deleteDisplayeMovie}
+          />
         ))}
       </ul>
-      {!saveMovies && (
+      {!isSavedMoviesPage && (
         <button
           onClick={handleClick}
           className={`movies-card-list__button-yet ${
@@ -40,12 +48,14 @@ function MoviesCardList({
 }
 
 MoviesCardList.propTypes = {
-  saveMovies: PropTypes.bool,
+  isSavedMoviesPage: PropTypes.bool,
   displayedMovies: PropTypes.array,
   isOpenPreloader: PropTypes.bool,
   errorText: PropTypes.string,
   showMoreMovies: PropTypes.func,
   buttonYetInvisibly: PropTypes.bool,
+  indexesOfSavedMovies: PropTypes.array,
+  deleteDisplayeMovie: PropTypes.func,
 };
 
 export default MoviesCardList;

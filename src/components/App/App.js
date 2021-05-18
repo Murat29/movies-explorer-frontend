@@ -26,18 +26,22 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   // eslint-disable-next-line no-unused-vars
   const [currentUser, setCurrentUser] = React.useState({});
+  const [savedMovies, setSavedMovies] = React.useState([]);
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       mainApi
         .checkToken(token)
-        .then((res) => {
+        .then((userData) => {
           setLoggedIn(true);
-          setCurrentUser(res);
+          setCurrentUser(userData);
+          return mainApi.getMovies(localStorage.getItem('token'));
+        })
+        .then((savedMovies) => {
+          setSavedMovies(savedMovies);
           history.push('/movies');
         })
-
         .catch((err) => {
           console.log(err);
         });
@@ -56,9 +60,13 @@ function App() {
         }
         return mainApi.checkToken(res.token);
       })
-      .then((res) => {
+      .then((userData) => {
         setLoggedIn(true);
-        setCurrentUser(res);
+        setCurrentUser(userData);
+        return mainApi.getMovies(localStorage.getItem('token'));
+      })
+      .then((savedMovies) => {
+        setSavedMovies(savedMovies);
         history.push('/movies');
       });
   }
@@ -84,11 +92,18 @@ function App() {
       <Route exact path={urlHeader} component={Header} />
       <Switch>
         <Route exact path="/" component={Main} />
-        <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} />
+        <ProtectedRoute
+          path="/movies"
+          loggedIn={loggedIn}
+          indexesOfSavedMovies={savedMovies.map((data) => data.id)}
+          component={Movies}
+        />
         <ProtectedRoute
           path="/saved-movies"
           loggedIn={loggedIn}
           component={SavedMovies}
+          savedMovies={savedMovies}
+          setSavedMovies={setSavedMovies}
         />
         <ProtectedRoute
           path="/profile"

@@ -3,32 +3,20 @@ import PropTypes from 'prop-types';
 import './Register.css';
 import Section from '../Section/Section';
 import Form from '../Form/Form';
+import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Register({ handleRegistration }) {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
   const [isRegistrationError, setIsRegistrationError] = React.useState(false);
-
-  function handleChangeNameUser(e) {
-    setName(e.target.value);
-  }
-
-  function handleChangeEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handleChangePassword(e) {
-    setPassword(e.target.value);
-  }
+  const [values, handleChange, errors, isValid, resetForm] =
+    useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsRegistrationError(false);
-    handleRegistration(name, email, password).catch((err) => {
+    handleRegistration(values.name, values.email, values.password).catch(() => {
       setIsRegistrationError(true);
-      console.log(err);
     });
+    resetForm();
   }
 
   const formParams = {
@@ -37,22 +25,32 @@ function Register({ handleRegistration }) {
       {
         placeholder: 'Имя',
         type: 'text',
-        value: name,
-        onChange: handleChangeNameUser,
+        value: values.name || '',
+        onChange: handleChange,
+        name: 'name',
+        error: errors.name,
+        pattern: '^[А-Яа-яЁёA-Za-z- ]+$',
+        minLength: 2,
       },
       {
         placeholder: 'E-mail',
         type: 'email',
-        value: email,
-        onChange: handleChangeEmail,
+        value: values.email || '',
+        onChange: handleChange,
+        name: 'email',
+        error: errors.email,
       },
       {
         placeholder: 'Пароль',
         type: 'password',
-        value: password,
-        onChange: handleChangePassword,
+        value: values.password || '',
+        onChange: handleChange,
+        name: 'password',
+        error: errors.password,
+        minLength: 4,
       },
     ],
+    isValid: isValid,
     onSubmit: handleSubmit,
     isRegistrationError: isRegistrationError,
     submitButtonText: 'Зарегистрироваться',

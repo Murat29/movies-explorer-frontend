@@ -7,8 +7,6 @@ import menu from '../../images/menu.svg';
 import ApplicationLink from '../../components/ApplicationLink/ApplicationLink';
 import './Header.css';
 function Header(props) {
-  console.log(props.location);
-
   const [navOpened, setNavOpened] = React.useState(false);
 
   function OpenedNav() {

@@ -3,26 +3,21 @@ import PropTypes from 'prop-types';
 import './Login.css';
 import Section from '../Section/Section';
 import Form from '../Form/Form';
+import useFormWithValidation from '../../hooks/useFormWithValidation';
+
 function Login({ handleLogin }) {
   const [isRegistrationError, setIsRegistrationError] = React.useState(false);
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
 
-  function handleChangeEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handleChangePassword(e) {
-    setPassword(e.target.value);
-  }
+  const [values, handleChange, errors, isValid, resetForm] =
+    useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsRegistrationError(false);
-    handleLogin(email, password).catch((err) => {
+    handleLogin(values.email, values.password).catch(() => {
       setIsRegistrationError(true);
-      console.log(err);
     });
+    resetForm();
   }
 
   const formParams = {
@@ -31,16 +26,22 @@ function Login({ handleLogin }) {
       {
         placeholder: 'E-mail',
         type: 'email',
-        value: email,
-        onChange: handleChangeEmail,
+        value: values.email || '',
+        onChange: handleChange,
+        name: 'email',
+        error: errors.email,
       },
       {
         placeholder: 'Пароль',
         type: 'password',
-        value: password,
-        onChange: handleChangePassword,
+        value: values.password || '',
+        onChange: handleChange,
+        name: 'password',
+        error: errors.password,
+        minLength: 4,
       },
     ],
+    isValid: isValid,
     onSubmit: handleSubmit,
     isRegistrationError: isRegistrationError,
     submitButtonText: 'Войти',

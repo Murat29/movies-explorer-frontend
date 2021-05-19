@@ -8,19 +8,31 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Profile({ currentUser, setCurrentUser, setLoggedIn }) {
   const history = useHistory();
+  // eslint-disable-next-line no-unused-vars
   const [values, handleChange, errors, isValid, resetForm] =
     useFormWithValidation({ name: currentUser.name, email: currentUser.email });
+  const [isRegistrationError, setIsRegistrationError] = React.useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsRegistrationError('');
     mainApi
       .updateNameAndEmail(
         localStorage.getItem('token'),
         values.name,
         values.email
       )
-      .then((data) => setCurrentUser(data));
-    resetForm();
+      .then((data) => {
+        console.log(data);
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        let errorMessage;
+        if (err.includes('409'))
+          errorMessage = 'Пользователь с таким email уже существует.';
+        else errorMessage = ' При обновлении профиля произошла ошибка.';
+        setIsRegistrationError(errorMessage);
+      });
   }
 
   function handleExtit(e) {
@@ -60,6 +72,7 @@ function Profile({ currentUser, setCurrentUser, setLoggedIn }) {
           />
         </div>
         <p className="profile__input-error">{errors.email}</p>
+        <p className="profile__error">{isRegistrationError}</p>
         <button disabled={!isValid} type="submit" className="profile__button">
           Редактировать
         </button>

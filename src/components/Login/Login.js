@@ -6,16 +6,21 @@ import Form from '../Form/Form';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Login({ handleLogin }) {
-  const [isRegistrationError, setIsRegistrationError] = React.useState(false);
+  const [isRegistrationError, setIsRegistrationError] = React.useState('');
 
   const [values, handleChange, errors, isValid, resetForm] =
     useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsRegistrationError('');
     setIsRegistrationError(false);
-    handleLogin(values.email, values.password).catch(() => {
-      setIsRegistrationError(true);
+    handleLogin(values.email, values.password).catch((err) => {
+      let errorMessage;
+      if (err.includes('401'))
+        errorMessage = 'Вы ввели неправильный логин или пароль.';
+      else errorMessage = 'При авторизации произошла ошибка.';
+      setIsRegistrationError(errorMessage);
     });
     resetForm();
   }

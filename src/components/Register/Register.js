@@ -6,16 +6,22 @@ import Form from '../Form/Form';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Register({ handleRegistration }) {
-  const [isRegistrationError, setIsRegistrationError] = React.useState(false);
+  const [isRegistrationError, setIsRegistrationError] = React.useState('');
   const [values, handleChange, errors, isValid, resetForm] =
     useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsRegistrationError(false);
-    handleRegistration(values.name, values.email, values.password).catch(() => {
-      setIsRegistrationError(true);
-    });
+    handleRegistration(values.name, values.email, values.password).catch(
+      (err) => {
+        let errorMessage;
+        if (err.includes('409'))
+          errorMessage = 'Пользователь с таким email уже существует.';
+        else errorMessage = 'При регистрации пользователя произошла ошибка.';
+        setIsRegistrationError(errorMessage);
+      }
+    );
     resetForm();
   }
 

@@ -27,9 +27,7 @@ function Form({ params }) {
           </div>
         ))}
       </fieldset>
-      <p className="form__registration-error">
-        {params.isRegistrationError && 'Что то пошло не так'}
-      </p>
+      <p className="form__registration-error">{params.isRegistrationError}</p>
       <button disabled={!params.isValid} className="form__submit">
         {params.submitButtonText}
       </button>

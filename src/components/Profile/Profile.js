@@ -23,7 +23,6 @@ function Profile({ currentUser, setCurrentUser, setLoggedIn }) {
         values.email
       )
       .then((data) => {
-        console.log(data);
         setCurrentUser(data);
       })
       .catch((err) => {

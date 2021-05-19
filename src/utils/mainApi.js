@@ -36,7 +36,6 @@ class MainApi {
   }
 
   register(name, email, password) {
-    console.log(name);
     return fetch(`${this.url}/signup`, {
       method: 'POST',
       headers: this.headers,
@@ -83,7 +82,7 @@ class MainApi {
 }
 
 const configMainApi = {
-  url: 'http://localhost:3000',
+  url: 'https://murat.movies.api.nomoredomains.club',
   headers: {
     'Content-Type': 'application/json',
   },

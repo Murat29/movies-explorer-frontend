@@ -24,7 +24,6 @@ function App() {
   const urlFooter = ['/', '/movies', '/saved-movies'];
   const history = useHistory();
   const [loggedIn, setLoggedIn] = React.useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] = React.useState([]);
 
@@ -95,7 +94,9 @@ function App() {
 
   return (
     <>
-      <Route exact path={urlHeader} component={Header} />
+      <Route exact path={urlHeader}>
+        <Header loggedIn={loggedIn} />
+      </Route>
       <Switch>
         <Route exact path="/" component={Main} />
         <ProtectedRoute
@@ -114,8 +115,11 @@ function App() {
         />
         <ProtectedRoute
           path="/profile"
-          loggedIn={loggedIn}
           component={Profile}
+          loggedIn={loggedIn}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+          setLoggedIn={setLoggedIn}
         />
         <Route path="/signup">
           <Register handleRegistration={handleRegistration} />

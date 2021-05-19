@@ -62,6 +62,17 @@ class MainApi {
     }).then(this._getResponseData);
   }
 
+  updateNameAndEmail(token, name, email) {
+    return fetch(`${this.url}/users/me`, {
+      method: 'PATCH',
+      headers: {
+        ...this.headers,
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ name, email }),
+    }).then(this._getResponseData);
+  }
+
   _getResponseData(data) {
     if (!data.ok) {
       // eslint-disable-next-line no-undef

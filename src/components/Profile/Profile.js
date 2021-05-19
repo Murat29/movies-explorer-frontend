@@ -1,9 +1,13 @@
 import React from 'react';
-import Section from '../Section/Section';
+import PropTypes from 'prop-types';
 import './Profile.css';
-function Profile() {
-  const [name, setName] = React.useState('Виталий');
-  const [email, setEmail] = React.useState('pochta@yandex.ru');
+import { useHistory } from 'react-router-dom';
+import Section from '../Section/Section';
+import mainApi from '../../utils/mainApi';
+function Profile({ currentUser, setCurrentUser, setLoggedIn }) {
+  const history = useHistory();
+  const [name, setName] = React.useState(currentUser.name);
+  const [email, setEmail] = React.useState(currentUser.email);
 
   function handleChangeName(e) {
     setName(e.target.value);
@@ -13,10 +17,25 @@ function Profile() {
     setEmail(e.target.value);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    mainApi
+      .updateNameAndEmail(localStorage.getItem('token'), name, email)
+      .then((data) => setCurrentUser(data));
+  }
+
+  function handleExtit(e) {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    setCurrentUser({});
+    setLoggedIn(false);
+    history.push('/');
+  }
+
   return (
     <Section className="profile" tablet="m" phone="l">
       <h2 className="profile__title">Привет, Виталий!</h2>
-      <form className="profile__form">
+      <form onSubmit={handleSubmit} className="profile__form">
         <div className="profile__input-container">
           <p className="profile__input-placeholder">Имя</p>
           <input
@@ -36,13 +55,24 @@ function Profile() {
             type="email"
           />
         </div>
-        <button className="profile__button">Редактировать</button>
-        <button className="profile__button profile__button_exit">
+        <button type="submit" className="profile__button">
+          Редактировать
+        </button>
+        <button
+          onClick={handleExtit}
+          className="profile__button profile__button_exit"
+        >
           Выйти из аккаунта
         </button>
       </form>
     </Section>
   );
 }
+
+Profile.propTypes = {
+  currentUser: PropTypes.object,
+  setCurrentUser: PropTypes.func,
+  setLoggedIn: PropTypes.func,
+};
 
 export default Profile;

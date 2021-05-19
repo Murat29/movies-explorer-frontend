@@ -4,25 +4,26 @@ import Section from '../Section/Section';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm({ onSubmit }) {
-  const [searchValue, setSearchValue] = React.useState({
-    value: '',
-    isError: false,
-  });
+function SearchForm({
+  onSubmit,
+  isShortMosies,
+  setIsShortMosies,
+  searchValue,
+  setSearchValue,
+}) {
+  const [isError, setIsError] = React.useState(false);
 
   function handleChange(e) {
-    setSearchValue({ value: e.target.value, isError: false });
+    setSearchValue(e.target.value);
+    setIsError(false);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!searchValue.value) {
-      setSearchValue({
-        value: '',
-        isError: true,
-      });
+    if (!searchValue) {
+      setIsError(true);
     } else {
-      onSubmit(searchValue.value);
+      onSubmit();
     }
   }
 
@@ -30,19 +31,22 @@ function SearchForm({ onSubmit }) {
     <Section className="search-form" tablet="s" phone="m">
       <form onSubmit={handleSubmit} className="search-form__form" noValidate>
         <input
-          value={searchValue.value}
+          value={searchValue}
           onChange={handleChange}
           className={`search-form__input ${
-            searchValue.isError && 'search-form__input_error'
+            isError && 'search-form__input_error'
           }`}
           placeholder="Фильм"
           required
         />
         <button className="search-form__submit" type="submit"></button>
         <p className="search-form__error-text">
-          {searchValue.isError && 'Нужно ввести ключевое слово'}
+          {isError && 'Нужно ввести ключевое слово'}
         </p>
-        <FilterCheckbox />
+        <FilterCheckbox
+          isShortMosies={isShortMosies}
+          setIsShortMosies={setIsShortMosies}
+        />
         <div className="search-form__border" />
       </form>
     </Section>
@@ -51,6 +55,10 @@ function SearchForm({ onSubmit }) {
 
 SearchForm.propTypes = {
   onSubmit: PropTypes.func,
+  setIsShortMosies: PropTypes.func,
+  isShortMosies: PropTypes.bool,
+  searchValue: PropTypes.string,
+  setSearchValue: PropTypes.func,
 };
 
 export default SearchForm;

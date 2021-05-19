@@ -13,6 +13,8 @@ function Movies({ indexesOfSavedMovies }) {
   const [isOpenPreloader, setIsOpenPreloader] = React.useState(false);
   const [errorText, setErrorText] = React.useState('');
   const [screen, setScreen] = React.useState(window.screen.availWidth);
+  const [isShortMosies, setIsShortMosies] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState('');
 
   React.useEffect(() => {
     let savedMovies = JSON.parse(localStorage.getItem('movies'));
@@ -62,20 +64,19 @@ function Movies({ indexesOfSavedMovies }) {
     );
   }
 
-  function handleSearchSubmit(value) {
+  function handleSearchSubmit() {
     setMovies([]);
     setIsOpenPreloader(true);
     setErrorText('');
     moviesApi
       .getMovies()
       .then((data) => {
-        const filteredMovies = filterMovies(data, value);
+        const filteredMovies = filterMovies(data, searchValue, isShortMosies);
         let newErrorText = '';
         if (filteredMovies.length === 0) newErrorText = 'Ничего не найдено';
         setErrorText(newErrorText);
         setMovies(filteredMovies);
         showMoreMovies(true, Boolean(newErrorText), filteredMovies.length);
-        console.log(filteredMovies);
       })
       .catch(() =>
         setErrorText(
@@ -87,7 +88,13 @@ function Movies({ indexesOfSavedMovies }) {
 
   return (
     <main className="movies">
-      <SearchForm onSubmit={handleSearchSubmit} />
+      <SearchForm
+        onSubmit={handleSearchSubmit}
+        isShortMosies={isShortMosies}
+        setIsShortMosies={setIsShortMosies}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
       <MoviesCardLIst
         isOpenPreloader={isOpenPreloader}
         displayedMovies={

@@ -36,10 +36,9 @@ function App() {
         .then((userData) => {
           setLoggedIn(true);
           setCurrentUser(userData);
-          return mainApi.getMovies(localStorage.getItem('token'));
+          return updateSavedMovies();
         })
-        .then((savedMovies) => {
-          setSavedMovies(savedMovies);
+        .then(() => {
           history.push('/movies');
         })
         .catch((err) => {
@@ -63,10 +62,9 @@ function App() {
       .then((userData) => {
         setLoggedIn(true);
         setCurrentUser(userData);
-        return mainApi.getMovies(localStorage.getItem('token'));
+        return updateSavedMovies();
       })
-      .then((savedMovies) => {
-        setSavedMovies(savedMovies);
+      .then(() => {
         history.push('/movies');
       });
   }
@@ -87,6 +85,14 @@ function App() {
       });
   }
 
+  function updateSavedMovies() {
+    return mainApi
+      .getMovies(localStorage.getItem('token'))
+      .then((savedMovies) => {
+        setSavedMovies(savedMovies);
+      });
+  }
+
   return (
     <>
       <Route exact path={urlHeader} component={Header} />
@@ -103,6 +109,7 @@ function App() {
           loggedIn={loggedIn}
           component={SavedMovies}
           savedMovies={savedMovies}
+          updateSavedMovies={updateSavedMovies}
           setSavedMovies={setSavedMovies}
         />
         <ProtectedRoute

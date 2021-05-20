@@ -6,7 +6,11 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
   return (
     <Route>
       {() =>
-        props.loggedIn ? <Component {...props} /> : <Redirect to="./signin" />
+        props.loggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={`.${props.urlRedirects}`} />
+        )
       }
     </Route>
   );
@@ -15,6 +19,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
 ProtectedRoute.propTypes = {
   component: PropTypes.func,
   loggedIn: PropTypes.bool,
+  urlRedirects: PropTypes.string,
 };
 
 export default ProtectedRoute;

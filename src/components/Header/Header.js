@@ -31,7 +31,7 @@ function Header(props) {
         </ApplicationLink>
         <Switch>
           {props.loggedIn ? (
-            <Route path={['/movies', '/saved-movies', '/profile']}>
+            <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
               <img
                 className="header__menu-icon"
                 onClick={OpenedNav}

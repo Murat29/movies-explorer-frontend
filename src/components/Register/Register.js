@@ -7,22 +7,22 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Register({ handleRegistration }) {
   const [isRegistrationError, setIsRegistrationError] = React.useState('');
-  const [values, handleChange, errors, isValid, resetForm] =
-    useFormWithValidation();
+  const [formDisabled, setFormDisabled] = React.useState(false);
+  const [values, handleChange, errors, isValid] = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
+    setFormDisabled(true);
     setIsRegistrationError(false);
-    handleRegistration(values.name, values.email, values.password).catch(
-      (err) => {
+    handleRegistration(values.name, values.email, values.password)
+      .catch((err) => {
         let errorMessage;
         if (err.includes('409'))
           errorMessage = 'Пользователь с таким email уже существует.';
         else errorMessage = 'При регистрации пользователя произошла ошибка.';
         setIsRegistrationError(errorMessage);
-      }
-    );
-    resetForm();
+      })
+      .finally(() => setFormDisabled(false));
   }
 
   const formParams = {
@@ -68,7 +68,7 @@ function Register({ handleRegistration }) {
   return (
     <Section className="register" tablet="m" phone="l">
       <div className="register__container">
-        <Form params={formParams} />
+        <Form params={formParams} formDisabled={formDisabled} />
       </div>
     </Section>
   );

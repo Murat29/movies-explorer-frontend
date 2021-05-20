@@ -7,22 +7,23 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Login({ handleLogin }) {
   const [isRegistrationError, setIsRegistrationError] = React.useState('');
-
-  const [values, handleChange, errors, isValid, resetForm] =
-    useFormWithValidation();
+  const [formDisabled, setFormDisabled] = React.useState(false);
+  const [values, handleChange, errors, isValid] = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
+    setFormDisabled(true);
     setIsRegistrationError('');
     setIsRegistrationError(false);
-    handleLogin(values.email, values.password).catch((err) => {
-      let errorMessage;
-      if (err.includes('401'))
-        errorMessage = 'Вы ввели неправильный логин или пароль.';
-      else errorMessage = 'При авторизации произошла ошибка.';
-      setIsRegistrationError(errorMessage);
-    });
-    resetForm();
+    handleLogin(values.email, values.password)
+      .catch((err) => {
+        let errorMessage;
+        if (err.includes('401'))
+          errorMessage = 'Вы ввели неправильный логин или пароль.';
+        else errorMessage = 'При авторизации произошла ошибка.';
+        setIsRegistrationError(errorMessage);
+      })
+      .finally(() => setFormDisabled(false));
   }
 
   const formParams = {
@@ -58,7 +59,7 @@ function Login({ handleLogin }) {
   return (
     <Section className="login" tablet="m" phone="l">
       <div className="login__container">
-        <Form params={formParams} />
+        <Form params={formParams} formDisabled={formDisabled} />
       </div>
     </Section>
   );

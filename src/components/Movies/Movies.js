@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardLIst from '../MoviesCardList/MoviesCardLIst';
-import moviesApi from '../../utils/moviesApi';
 import filterMovies from '../../utils/filterMovies';
 import './Movies.css';
 
-function Movies({ indexesOfSavedMovies }) {
-  const [movies, setMovies] = React.useState([]);
+function Movies({ indexesOfSavedMovies, movies }) {
+  const [displayedMovies, setDisplayedMovies] = React.useState([]);
   const [numberOfMoviesDisplayed, setNumberOfMoviesDisplayed] =
     React.useState(0);
   const [isOpenPreloader, setIsOpenPreloader] = React.useState(false);
@@ -15,11 +14,10 @@ function Movies({ indexesOfSavedMovies }) {
   const [screen, setScreen] = React.useState(window.screen.availWidth);
   const [isShortMosies, setIsShortMosies] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
-
   React.useEffect(() => {
     let savedMovies = JSON.parse(localStorage.getItem('movies'));
     if (savedMovies === null) savedMovies = [];
-    setMovies(savedMovies);
+    setDisplayedMovies(savedMovies);
 
     let savedNumber = window.localStorage.getItem('numberOfMoviesDisplayed');
     if (savedNumber === null) savedNumber = 0;
@@ -38,8 +36,8 @@ function Movies({ indexesOfSavedMovies }) {
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem('movies', JSON.stringify(movies));
-  }, [movies]);
+    localStorage.setItem('movies', JSON.stringify(displayedMovies));
+  }, [displayedMovies]);
 
   React.useEffect(() => {
     localStorage.setItem(
@@ -59,31 +57,22 @@ function Movies({ indexesOfSavedMovies }) {
     setNumberOfMoviesDisplayed(
       Math.min(
         (isSubmit ? 0 : numberOfMoviesDisplayed) + numberOfAddedMovies,
-        moviesLength ? moviesLength : movies.length
+        moviesLength ? moviesLength : displayedMovies.length
       )
     );
   }
 
   function handleSearchSubmit() {
-    setMovies([]);
+    setDisplayedMovies([]);
     setIsOpenPreloader(true);
     setErrorText('');
-    moviesApi
-      .getMovies()
-      .then((data) => {
-        const filteredMovies = filterMovies(data, searchValue, isShortMosies);
-        let newErrorText = '';
-        if (filteredMovies.length === 0) newErrorText = 'Ничего не найдено';
-        setErrorText(newErrorText);
-        setMovies(filteredMovies);
-        showMoreMovies(true, Boolean(newErrorText), filteredMovies.length);
-      })
-      .catch(() =>
-        setErrorText(
-          'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
-        )
-      )
-      .finally(() => setIsOpenPreloader(false));
+    const filteredMovies = filterMovies(movies, searchValue, isShortMosies);
+    let newErrorText = '';
+    if (filteredMovies.length === 0) newErrorText = 'Ничего не найдено';
+    setErrorText(newErrorText);
+    setDisplayedMovies(filteredMovies);
+    showMoreMovies(true, Boolean(newErrorText), filteredMovies.length);
+    setIsOpenPreloader(false);
   }
 
   return (
@@ -100,11 +89,11 @@ function Movies({ indexesOfSavedMovies }) {
         displayedMovies={
           numberOfMoviesDisplayed === 0
             ? []
-            : movies.slice(0, numberOfMoviesDisplayed)
+            : displayedMovies.slice(0, numberOfMoviesDisplayed)
         }
         errorText={errorText}
         showMoreMovies={showMoreMovies}
-        buttonYetInvisibly={movies.length === numberOfMoviesDisplayed}
+        buttonYetInvisibly={displayedMovies.length === numberOfMoviesDisplayed}
         indexesOfSavedMovies={indexesOfSavedMovies}
       />
     </main>
@@ -113,6 +102,7 @@ function Movies({ indexesOfSavedMovies }) {
 
 Movies.propTypes = {
   indexesOfSavedMovies: PropTypes.array,
+  movies: PropTypes.array,
 };
 
 export default Movies;

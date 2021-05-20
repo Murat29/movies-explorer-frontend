@@ -33,9 +33,6 @@
   font-weight: normal;
   font-size: 11px;
   line-height: 13px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -48,6 +45,15 @@
   .profile__form {
     margin-top: 80px;
   }
+}
+
+.profile__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile__input-container {
@@ -95,21 +101,25 @@
   margin: 5px 0;
 }
 
-.profile__error {
+.profile__message {
   margin: 220px 0 16px 0;
   min-height: 13px;
   text-align: center;
   color: #ff0000;
 }
 
+.profile__message_correct {
+  color: #008000;
+}
+
 @media screen and (max-width: 768px) {
-  .profile__error {
+  .profile__message {
     margin: 210px 0 16px 0;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .profile__error {
+  .profile__message {
     margin: 380px 0 16px 0;
   }
 }

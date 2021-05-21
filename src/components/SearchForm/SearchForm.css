@@ -27,10 +27,13 @@
   min-height: 46px;
   outline: none;
   padding: 0 22px 0;
-  margin-bottom: 40px;
   font-size: 13px;
   line-height: 17px;
   box-sizing: border-box;
+}
+
+.search-form__input_error {
+  border-color: #ff0000;
 }
 
 .search-form__input::placeholder {
@@ -73,6 +76,14 @@
 
 .search-form__submit:focus {
   border-color: #000000;
+}
+
+.search-form__error-text {
+  font-size: 13px;
+  line-height: 17px;
+  color: red;
+  margin: 5px 0 30px 0;
+  min-height: 17px;
 }
 
 .search-form__border {

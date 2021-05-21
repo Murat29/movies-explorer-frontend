@@ -19,7 +19,7 @@
   }
 }
 
-.form__inputs {
+.form__fieldset {
   min-height: 266px;
   margin: 0;
   padding: 0;
@@ -59,8 +59,12 @@
   line-height: 16px;
 }
 
+.form__input_error {
+  border-color: #ff0000;
+}
+
 .form__input:focus {
-  border: 1px solid #000000;
+  border-color: #000000;
 }
 .form__input-error {
   font-weight: normal;
@@ -68,6 +72,17 @@
   line-height: 12px;
   color: #ee3465;
   margin: 0;
+  min-height: 24px;
+}
+
+.form__registration-error {
+  margin: 70px 0 5px 0;
+  text-align: center;
+  color: #ff0000;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  min-height: 17px;
 }
 
 .form__submit {
@@ -77,7 +92,7 @@
   -moz-appearance: none;
   appearance: none;
   padding: 0;
-  margin: 70px 0 0 0;
+  margin: 0;
   width: 100%;
   min-height: 45px;
   border: 1px solid #ff6838;
@@ -98,6 +113,12 @@
 
 .form__submit:focus {
   border-color: #000000;
+}
+
+.form__submit:disabled {
+  border-color: #f8f8f8;
+  background: #f8f8f8;
+  color: #c2c2c2;
 }
 
 .form__container-toggle {

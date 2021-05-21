@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './FilterCheckbox.css';
-function FilterCheckbox() {
+function FilterCheckbox({ isShortMosies, setIsShortMosies }) {
+  function handleChange() {
+    setIsShortMosies(!isShortMosies);
+  }
+
   return (
     <label className="filter-checkbox">
       <input
+        onChange={handleChange}
+        checked={isShortMosies}
         className="filter-checkbox__invisible-checkbox"
         type="checkbox"
         id="filter-shortfilm"
@@ -15,5 +22,10 @@ function FilterCheckbox() {
     </label>
   );
 }
+
+FilterCheckbox.propTypes = {
+  isShortMosies: PropTypes.bool,
+  setIsShortMosies: PropTypes.func,
+};
 
 export default FilterCheckbox;

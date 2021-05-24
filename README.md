@@ -8,7 +8,7 @@
 1) Установить менеджер пакетов "npm". Он идет в составе Node.js. Скачать и установить с [официального сайта](https://nodejs.org/en/download/)
 2) Клонировать репозиторий на локальную машину
 
-   `git clone https://github.com/Murat29/react-mesto-api-full`
+   `git clone https://github.com/Murat29/movies-explorer-frontend`
    
 4) Установить зависимости
 

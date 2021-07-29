@@ -10,8 +10,8 @@ function AboutMe() {
       <Title>Студент</Title>
       <div className="about-me__description">
         <div className="about-me__text-container">
-          <p className="about-me__name">Виталий</p>
-          <p className="about-me__job">Фронтенд-разработчик, 30 лет</p>
+          <p className="about-me__name">Мурат</p>
+          <p className="about-me__job">Фронтенд-разработчик, 24 года</p>
           <p className="about-me__about">
             Меня всегда тянуло к программированию. Летом 2020 моя тяга
             пересилила страх, и я записался на курс от Яндекс.Практикума. Там я
